@@ -62,11 +62,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="safe-area-enabled">
+    <html lang="en" suppressHydrationWarning>
       <body className={`font-sans ${openSans.variable} ${rubik.variable} ${instrumentSerif.variable}`} suppressHydrationWarning>
         <TranslationProvider>
           <Suspense fallback={null}>
-            {children}
+            {/* Safe-area wrapper - único contenedor con padding */}
+            <div className="safe-wrapper">
+              {children}
+            </div>
             <Analytics />
           </Suspense>
         </TranslationProvider>
