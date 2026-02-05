@@ -142,13 +142,11 @@
     /* Usamos min-h-screen en lugar de dvh a veces ayuda con el rebote en iOS */
     min-height: 100vh;
 
-    /* IMPORTANTE:
-       Si quieres que el TEXTO también llegue al borde (bajo tu riesgo de que lo tape el notch),
-       NO pongas padding.
-       Si quieres que solo el FONDO llegue al borde pero el texto se lea, usa:
+    /* REMOVIDO: Padding seguro en body para permitir background full-bleed.
+       El contenido debe usar utilidades safe-* individualmente.
     */
-    padding-top: env(safe-area-inset-top);
-    padding-bottom: env(safe-area-inset-bottom);
+    /* padding-top: env(safe-area-inset-top); */
+    /* padding-bottom: env(safe-area-inset-bottom); */
 
     /* iOS Safari specific: prevent bouncing */
     overscroll-behavior: none;
