@@ -29,7 +29,7 @@ export function FloatingNavbar() {
   }
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50 px-4 py-4">
+    <nav className="fixed left-0 right-0 top-0 z-50 safe-x safe-top" style={{ paddingLeft: 'calc(var(--safe-area-inset-left) + 1rem)', paddingRight: 'calc(var(--safe-area-inset-right) + 1rem)', paddingTop: 'calc(var(--safe-area-inset-top) + 1rem)', paddingBottom: '1rem' }}>
       <div className="mx-auto max-w-7xl rounded-2xl border-2 border-white/10 bg-white/5 px-6 py-4 backdrop-blur-sm">
         <div className="relative flex items-center justify-between">
           {/* Logo / Name */}
