@@ -67,7 +67,7 @@ function ExperienceCard({ experience, index, totalCards }: { experience: Experie
             </span>
           )}
         </h3>
-        
+
         <p className="text-xs sm:text-sm leading-relaxed text-gray-300/90 font-open-sans-custom">
           {experience.desc}
         </p>
@@ -177,8 +177,8 @@ export function ExperienceSection({
         const mapped = rows.map((row) => {
           const item = row as any
           const highlights = item.section_highlights?.length
-              ? [...item.section_highlights].sort((a: any, b: any) => a.sort_order - b.sort_order).map((h: any) => h.text)
-              : []
+            ? [...item.section_highlights].sort((a: any, b: any) => a.sort_order - b.sort_order).map((h: any) => h.text)
+            : []
           const tags = item.content_section_tags?.map((tag: any) => tag.section_tags?.name).filter(Boolean) as string[] | undefined
 
           // Get localized field based on current language
@@ -210,13 +210,13 @@ export function ExperienceSection({
   const experiencesToRender = experiences ?? []
 
   return (
-    <div className="relative mx-auto w-full max-w-6xl px-4 pb-20 pt-4 md:px-6 lg:px-10">
-      
+    <div className="relative mx-auto w-full px-4 pb-20 pt-4 md:px-6 lg:px-10">
+
       <div className="flex flex-col lg:grid lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-16 lg:items-start">
-        
+
         {/* Left Column: Static Info */}
         <div className="flex flex-col gap-6 md:gap-8 order-1 lg:order-none">
-            
+
           {/* Profile Picture Section */}
           <div className="relative aspect-square w-40 sm:w-48 mx-auto lg:mx-0 overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm group/profile">
             <DotPattern width={16} height={16} cx={1} cy={1} cr={1} className="absolute inset-0 -z-10 opacity-30 fill-white/20" />
@@ -232,17 +232,17 @@ export function ExperienceSection({
             <p className="max-w-md mx-auto lg:mx-0 text-sm sm:text-base leading-relaxed text-gray-400 font-open-sans-custom">{t("experienceIntro")}</p>
 
             <div className="mt-6 md:mt-10 flex flex-col gap-6 md:gap-8 font-open-sans-custom">
-              
+
               {/* Education */}
               <div className="relative border-l border-white/10 pl-4">
                 <h4 className="mb-2 text-xs font-bold text-white uppercase tracking-widest">{t("education")}</h4>
                 <p className="text-gray-200 text-sm font-semibold">Tecnológico de Monterrey</p>
                 <p className="text-xs text-gray-500">{t("degree")}</p>
               </div>
-              
+
               {/* Separator Line */}
               <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-              
+
               {/* Tech Stack - Desktop: All Categories */}
               <div className="hidden lg:block relative border-l border-white/10 pl-4 space-y-4">
                 {techCategories.map((category) => (
@@ -261,17 +261,17 @@ export function ExperienceSection({
 
               {/* Tech Stack - Mobile: Carousel (UPDATED: Centered & Purple) */}
               <div className="lg:hidden relative border-l border-white/10 pl-4">
-                
+
                 {/* Header (Centered) */}
                 <div className="flex items-center justify-center mb-4">
-                  <h4 
+                  <h4
                     key={currentTechIndex}
                     className="text-[10px] font-bold text-white uppercase tracking-widest animate-in fade-in slide-in-from-left-2 duration-300"
                   >
                     {t(techCategories[currentTechIndex].titleKey as any)}
                   </h4>
                 </div>
-                
+
                 {/* Carousel Content (Centered) */}
                 <div className="min-h-[60px]">
                   <div className="flex flex-wrap justify-center gap-2">
@@ -293,7 +293,7 @@ export function ExperienceSection({
                   >
                     <ChevronLeft className="h-3.5 w-3.5" />
                   </button>
-                  
+
                   {/* Next Button (Blinking Purple) */}
                   <button
                     onClick={() => setCurrentTechIndex((prev) => (prev === techCategories.length - 1 ? 0 : prev + 1))}
@@ -310,7 +310,7 @@ export function ExperienceSection({
                     <div className="absolute inset-0 rounded-full border border-purple-500/60 opacity-80" />
                   </button>
                 </div>
-                
+
                 {/* Dots indicator (Centered & Purple) */}
                 <div className="flex justify-center gap-1.5 mt-4">
                   {techCategories.map((_, idx) => (
@@ -333,7 +333,7 @@ export function ExperienceSection({
                   <NowPlayingCard
                     track={nowPlaying}
                     isPlaying={isPlaying}
-                    onToggle={onTogglePlay ?? (() => {})}
+                    onToggle={onTogglePlay ?? (() => { })}
                     onNext={onNextTrack}
                     onPrev={onPrevTrack}
                     currentTime={currentTime}

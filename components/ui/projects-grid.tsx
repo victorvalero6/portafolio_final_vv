@@ -53,18 +53,18 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       {/* Technical Header inside Card */}
       <div className="flex items-center justify-between border-b border-white/5 bg-black/20 px-4 py-3">
         <div className="flex items-center gap-3">
-            <span className="font-mono text-[10px] text-green-500/80">PRJ-{projectIndex}</span>
-            <div className="h-3 w-[1px] bg-white/10"></div>
-            <div className="flex gap-1">
-                <div className="h-1.5 w-1.5 rounded-full bg-white/20 group-hover:bg-green-400 transition-colors"></div>
-                <div className="h-1.5 w-1.5 rounded-full bg-white/20"></div>
-            </div>
+          <span className="font-mono text-[10px] text-green-500/80">PRJ-{projectIndex}</span>
+          <div className="h-3 w-[1px] bg-white/10"></div>
+          <div className="flex gap-1">
+            <div className="h-1.5 w-1.5 rounded-full bg-white/20 group-hover:bg-green-400 transition-colors"></div>
+            <div className="h-1.5 w-1.5 rounded-full bg-white/20"></div>
+          </div>
         </div>
         <ArrowUpRight
-            className={cn(
+          className={cn(
             "h-4 w-4 text-white/40 transition-all duration-300",
             isHovered && "translate-x-0.5 -translate-y-0.5 text-white"
-            )}
+          )}
         />
       </div>
 
@@ -72,7 +72,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <div className="relative aspect-video w-full overflow-hidden border-b border-white/5">
         {/* Scanline Overlay */}
         <div className="absolute inset-0 z-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-[1] bg-[length:100%_2px,3px_100%] pointer-events-none opacity-20" />
-        
+
         <img
           src={project.image || "/placeholder.svg"}
           alt={project.imageAlt ?? project.title}
@@ -229,35 +229,35 @@ export function ProjectsGrid() {
     <div className="relative w-full">
       {/* Background decoration for the section */}
       <div className="absolute -left-10 -top-10 h-64 w-64 bg-indigo-500/10 blur-[100px]" />
-      
+
       {/* Section Header */}
       <div className="mb-12 flex flex-col gap-4 border-l-2 border-white/10 pl-6 md:flex-row md:items-end md:justify-between md:border-l-0 md:pl-0">
         <div className="relative">
-            {/* Dot Pattern specifically for header area */}
-            <div className="absolute -left-4 -top-8 -z-10 h-24 w-24 opacity-20">
-               <DotPattern width={8} height={8} cx={1} cy={1} cr={1} className="fill-white" />
-            </div>
-            
-            <div className="flex items-center gap-3 mb-2">
-                <Folder className="h-4 w-4 text-gray-500" />
-                <p className="text-xs uppercase tracking-[0.2em] text-gray-500 font-open-sans-custom">
-                {t("selectedWork")}
-                </p>
-            </div>
-            <h2 className="text-4xl font-bold tracking-tight text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] font-open-sans-custom md:text-5xl">
+          {/* Dot Pattern specifically for header area */}
+          <div className="absolute -left-4 -top-8 -z-10 h-24 w-24 opacity-20">
+            <DotPattern width={8} height={8} cx={1} cy={1} cr={1} className="fill-white" />
+          </div>
+
+          <div className="flex items-center gap-3 mb-2">
+            <Folder className="h-4 w-4 text-gray-500" />
+            <p className="text-xs uppercase tracking-[0.2em] text-gray-500 font-open-sans-custom">
+              {t("selectedWork")}
+            </p>
+          </div>
+          <h2 className="text-4xl font-bold tracking-tight text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] font-open-sans-custom md:text-5xl">
             {t("recentProjects")}
-            </h2>
+          </h2>
         </div>
-        
+
         {/* Technical Deco Line */}
         <div className="hidden md:flex items-center gap-2 opacity-50">
-             <div className="h-[1px] w-24 bg-white/20"></div>
-             <span className="text-[10px] text-gray-400 font-mono">INDEX_VOL.01</span>
+          <div className="h-[1px] w-24 bg-white/20"></div>
+          <span className="text-[10px] text-gray-400 font-mono">INDEX_VOL.01</span>
         </div>
       </div>
 
       {/* Grid */}
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {projectsToRender.map((project, index) => (
           <ProjectCard key={index} project={project} index={index} />
         ))}

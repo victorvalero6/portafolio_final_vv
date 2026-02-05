@@ -217,7 +217,7 @@ export default function Home() {
     <main className="relative h-screen overflow-hidden">
       <LiquidMetalBackground />
       <TargetCursor targetSelector=".cursor-target" />
-      <Noise patternAlpha={20} patternRefreshInterval={3} />
+      <Noise patternAlpha={25} patternRefreshInterval={2} patternSize={260} patternScaleX={1.6} patternScaleY={2} />
 
 
 
@@ -254,7 +254,7 @@ export default function Home() {
 
           {/* Hero Section */}
           <section id="home" className="flex min-w-full snap-start items-center justify-center safe-px-4 safe-py-20">
-            <div className="mx-auto max-w-4xl">
+            <div className="mx-auto w-full max-w-screen-xl px-4 md:px-8">
               <div className="text-center px-0 leading-5">
                 <p className="mb-4 text-sm uppercase tracking-widest text-gray-400 font-open-sans-custom">
                   {t("designerDeveloper")}
@@ -368,7 +368,7 @@ export default function Home() {
                 "opacity-30",
               )}
             />
-            <div className="relative z-10 mx-auto w-full max-w-5xl">
+            <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-4 md:px-8">
               <ProjectsGrid />
               <SectionPager onPrev={() => scrollToSection(0)} onNext={() => scrollToSection(2)} prevLabel={t("back")} nextLabel={t("next")} />
             </div>
@@ -390,7 +390,7 @@ export default function Home() {
                 "opacity-30",
               )}
             />
-            <div className="relative z-10 mx-auto w-full max-w-5xl">
+            <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-4 md:px-8">
               <ExperienceSection
                 nowPlaying={playlist[currentSongIndex]}
                 isPlaying={isPlaying}
@@ -420,7 +420,7 @@ export default function Home() {
                 "opacity-25",
               )}
             />
-            <div className="relative z-10 mx-auto w-full max-w-5xl">
+            <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-4 md:px-8">
               <SkillsSection onContactClick={() => scrollToSection(4)} />
               <SectionPager onPrev={() => scrollToSection(2)} prevLabel={t("back")} />
             </div>
@@ -442,7 +442,7 @@ export default function Home() {
               )}
             />
 
-            <div className="relative z-10 mx-auto w-full max-w-6xl mt-[5vh]">
+            <div className="relative z-10 mx-auto w-full max-w-screen-2xl mt-[5vh] px-4 md:px-8">
               <ContactCard
                 title={t("letsWork")}
                 description={t("letsWorkDesc")}
