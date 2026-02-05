@@ -44,8 +44,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-500 cursor-target",
-        "hover:border-white/30 hover:bg-white/10 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.1)]"
+        "group relative flex flex-col overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-md transition-all duration-500 cursor-target shadow-2xl",
+        "hover:border-white/30 hover:bg-black/50 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.1)]"
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

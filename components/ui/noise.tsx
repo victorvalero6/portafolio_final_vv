@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 
 const Noise = ({
   patternSize = 250,
@@ -16,11 +16,6 @@ const Noise = ({
   patternAlpha?: number;
 }) => {
   const grainRef = useRef<HTMLCanvasElement>(null);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
     const canvas = grainRef.current;
@@ -75,14 +70,11 @@ const Noise = ({
     };
   }, [patternSize, patternScaleX, patternScaleY, patternRefreshInterval, patternAlpha]);
 
-  if (!isMounted) {
-    return null;
-  }
-
+  // Using inline styles for the overlay to match user's CSS requirement but ensuring z-index and fixed position
   return (
-    <canvas 
-      className="fixed left-0 top-0 w-screen h-screen pointer-events-none z-[10]" 
-      ref={grainRef} 
+    <canvas
+      className="fixed left-0 top-0 w-screen h-screen pointer-events-none z-[50]"
+      ref={grainRef}
       style={{ imageRendering: 'pixelated' }}
     />
   );
