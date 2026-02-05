@@ -71,6 +71,7 @@ export default function Home() {
   const { t } = useTranslation()
   const [currentSection, setCurrentSection] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [musicControlsVisible, setMusicControlsVisible] = useState(false)
   const [currentSongIndex, setCurrentSongIndex] = useState(0)
   const audioRef = useRef<HTMLAudioElement>(null)
   const [playback, setPlayback] = useState({ currentTime: 0, duration: 0 })
@@ -100,6 +101,24 @@ export default function Home() {
       title: "I Want To Talk About You",
       artist: "Ryo Fukui",
       coverUrl: "/music/souvenir-cover.png",
+    },
+    {
+      src: "/music/do-not-wait.mp3",
+      title: "Do Not Wait",
+      artist: "Wallows",
+      coverUrl: "/music/nothing-happens-cover.png",
+    },
+    {
+      src: "/music/to-all-the-dancers.mp3",
+      title: "To All the Dancers of the World",
+      artist: "Sweet Trip",
+      coverUrl: "/music/sweet-trip-love-cover.png",
+    },
+    {
+      src: "/music/brain-damage.mp3",
+      title: "Brain Damage (2023 Remaster)",
+      artist: "Pink Floyd",
+      coverUrl: "/music/dark-side-cover.png",
     }
   ]
 
@@ -116,6 +135,21 @@ export default function Home() {
   const skipPrev = () => {
     const prevIndex = (currentSongIndex - 1 + playlist.length) % playlist.length
     setCurrentSongIndex(prevIndex)
+  }
+
+  const handleToggleMusic = () => {
+    setMusicControlsVisible(true)
+    toggleMusic()
+  }
+
+  const handleSkipNext = () => {
+    setMusicControlsVisible(true)
+    skipNext()
+  }
+
+  const handleSkipPrev = () => {
+    setMusicControlsVisible(true)
+    skipPrev()
   }
 
   const toggleMusic = () => {
@@ -241,20 +275,46 @@ export default function Home() {
                         <ArrowDownRight className="h-4 w-4" />
                       </button>
                     </div>
-                    <button
-                      onClick={toggleMusic}
-                      className="flex flex-col items-center gap-1 text-sm text-gray-400 transition-colors hover:text-white font-open-sans-custom cursor-target"
-                    >
+                    <div className="flex flex-col items-center gap-1 text-sm text-gray-400 font-open-sans-custom">
                       <div className="flex items-center gap-2">
-                        {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-                        {isPlaying ? t("pauseMusic") : t("playMusic")}
+                        {musicControlsVisible && (
+                          <button
+                            type="button"
+                            onClick={handleSkipPrev}
+                            className="rounded-full p-2 text-gray-400 transition-colors hover:text-white cursor-target"
+                            aria-label="Previous track"
+                          >
+                            <ArrowLeft className="h-4 w-4" />
+                          </button>
+                        )}
+
+                        <button
+                          type="button"
+                          onClick={handleToggleMusic}
+                          className="flex items-center gap-2 text-gray-300 transition-colors hover:text-white cursor-target"
+                          aria-label={isPlaying ? t("pauseMusic") : t("playMusic")}
+                        >
+                          {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+                          {isPlaying ? t("pauseMusic") : t("playMusic")}
+                        </button>
+
+                        {musicControlsVisible && (
+                          <button
+                            type="button"
+                            onClick={handleSkipNext}
+                            className="rounded-full p-2 text-gray-400 transition-colors hover:text-white cursor-target"
+                            aria-label="Next track"
+                          >
+                            <ArrowRight className="h-4 w-4" />
+                          </button>
+                        )}
                       </div>
-                      {isPlaying && (
-                        <span className="text-xs text-gray-500">
-                          {playlist[currentSongIndex].title}
-                        </span>
-                      )}
-                    </button>
+
+                      <span className="text-xs text-gray-500">
+                        {playlist[currentSongIndex].title}{" "}
+                        <span className="text-gray-600">({currentSongIndex + 1}/{playlist.length})</span>
+                      </span>
+                    </div>
                   </div>
                   <audio 
                     ref={audioRef} 
