@@ -220,6 +220,9 @@ export default function Home() {
       <Noise patternAlpha={20} patternRefreshInterval={3} />
   
       <div className="fixed inset-0 z-[5] bg-black/50" />
+      
+      {/* Black border outline around the page */}
+      <div className="fixed inset-4 md:inset-6 lg:inset-8 z-[60] pointer-events-none border border-black" />
 
       {/* --- SCROLL ENTRY --- */}
       {!hasEntered && (
