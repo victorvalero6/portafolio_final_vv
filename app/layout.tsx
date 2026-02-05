@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
@@ -48,13 +48,21 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="safe-area-enabled">
       <body className={`font-sans ${openSans.variable} ${rubik.variable} ${instrumentSerif.variable}`} suppressHydrationWarning>
         <TranslationProvider>
           <Suspense fallback={null}>

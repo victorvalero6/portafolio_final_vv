@@ -213,7 +213,7 @@ export default function Home() {
             `}</style>
 
             {/* Hero Section */}
-            <section id="home" className="flex min-w-full snap-start items-center justify-center px-4 py-20">
+            <section id="home" className="flex min-w-full snap-start items-center justify-center safe-px-4 safe-py-20">
               <div className="mx-auto max-w-4xl">
                 <div className="text-center px-0 leading-5">
                   <p className="mb-4 text-sm uppercase tracking-widest text-gray-400 font-open-sans-custom">
@@ -288,7 +288,7 @@ export default function Home() {
             <section
               id="work"
               ref={workSectionRef}
-              className="relative min-w-full snap-start overflow-y-auto px-4 pt-24 pb-20 [&::-webkit-scrollbar]:hidden"
+              className="relative min-w-full snap-start overflow-y-auto safe-px-4 safe-pt-24 safe-pb-20 [&::-webkit-scrollbar]:hidden"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               <div
@@ -310,7 +310,7 @@ export default function Home() {
             <section
               id="about"
               ref={aboutSectionRef}
-              className="relative min-w-full snap-start overflow-y-auto px-4 pt-24 pb-20 [&::-webkit-scrollbar]:hidden"
+              className="relative min-w-full snap-start overflow-y-auto safe-px-4 safe-pt-24 safe-pb-20 [&::-webkit-scrollbar]:hidden"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               <div
@@ -340,7 +340,7 @@ export default function Home() {
             <section
               id="skills"
               ref={skillsSectionRef}
-              className="relative min-w-full snap-start overflow-y-auto px-4 pt-24 pb-20 [&::-webkit-scrollbar]:hidden"
+              className="relative min-w-full snap-start overflow-y-auto safe-px-4 safe-pt-24 safe-pb-20 [&::-webkit-scrollbar]:hidden"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               <div
@@ -362,7 +362,7 @@ export default function Home() {
             <section
               id="contact"
               ref={contactSectionRef}
-              className="relative min-w-full snap-start overflow-y-auto px-4 pt-24 pb-20"
+              className="relative min-w-full snap-start overflow-y-auto safe-px-4 safe-pt-24 safe-pb-20"
             >
               <div
                 aria-hidden="true"

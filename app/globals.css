@@ -40,6 +40,12 @@
   --font-open-sans: "Open Sans", sans-serif;
   --font-rubik: "Rubik", sans-serif;
   --font-instrument: "Instrument Serif", serif;
+  
+  /* iOS Safe Area Insets */
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-right: env(safe-area-inset-right, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-inset-left: env(safe-area-inset-left, 0px);
 }
 
 .dark {
@@ -123,14 +129,82 @@
   * {
     @apply border-border outline-ring/50;
   }
+  
+  html.safe-area-enabled {
+    /* Allow content to extend into safe areas while still being aware of them */
+    padding: 0;
+    margin: 0;
+  }
+  
   body {
     @apply bg-background text-foreground;
+    /* Body spans full screen, including notch/rounded corners */
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    /* iOS Safari specific: prevent bouncing */
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
   }
+  
   .font-open-sans-custom {
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 700;
     font-variation-settings: "wdth" 100;
+  }
+  
+  /* Safe Area Utility Classes */
+  .safe-top {
+    padding-top: var(--safe-area-inset-top);
+  }
+  
+  .safe-right {
+    padding-right: var(--safe-area-inset-right);
+  }
+  
+  .safe-bottom {
+    padding-bottom: var(--safe-area-inset-bottom);
+  }
+  
+  .safe-left {
+    padding-left: var(--safe-area-inset-left);
+  }
+  
+  .safe-x {
+    padding-left: var(--safe-area-inset-left);
+    padding-right: var(--safe-area-inset-right);
+  }
+  
+  .safe-y {
+    padding-top: var(--safe-area-inset-top);
+    padding-bottom: var(--safe-area-inset-bottom);
+  }
+  
+  .safe-all {
+    padding-top: var(--safe-area-inset-top);
+    padding-right: var(--safe-area-inset-right);
+    padding-bottom: var(--safe-area-inset-bottom);
+    padding-left: var(--safe-area-inset-left);
+  }
+  
+  /* Combined utilities: safe area + additional padding */
+  .safe-px-4 {
+    padding-left: calc(var(--safe-area-inset-left) + 1rem);
+    padding-right: calc(var(--safe-area-inset-right) + 1rem);
+  }
+  
+  .safe-py-20 {
+    padding-top: calc(var(--safe-area-inset-top) + 5rem);
+    padding-bottom: calc(var(--safe-area-inset-bottom) + 5rem);
+  }
+  
+  .safe-pt-24 {
+    padding-top: calc(var(--safe-area-inset-top) + 6rem);
+  }
+  
+  .safe-pb-20 {
+    padding-bottom: calc(var(--safe-area-inset-bottom) + 5rem);
   }
 }
 

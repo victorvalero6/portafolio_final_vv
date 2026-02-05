@@ -14,7 +14,7 @@ export function PageIndicator({
   onSectionClick,
 }: PageIndicatorProps) {
   return (
-    <div className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2">
+    <div className="fixed left-1/2 z-50 -translate-x-1/2" style={{ bottom: 'calc(var(--safe-area-inset-bottom) + 2rem)' }}>
       <div className="flex items-center">
         {Array.from({ length: totalSections }).map((_, index) => (
           <button
