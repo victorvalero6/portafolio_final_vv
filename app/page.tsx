@@ -222,7 +222,16 @@ export default function Home() {
       <div className="fixed inset-0 z-[5] bg-black/50" />
       
       {/* Black border outline around the page */}
-      <div className="fixed inset-4 md:inset-6 lg:inset-8 z-[60] pointer-events-none border border-black" />
+      <div 
+        className="fixed z-[60] pointer-events-none"
+        style={{
+          top: '1rem',
+          right: '1rem',
+          bottom: '1rem',
+          left: '1rem',
+          border: '1px solid black'
+        }}
+      />
 
       {/* --- SCROLL ENTRY --- */}
       {!hasEntered && (
