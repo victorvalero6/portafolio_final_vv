@@ -15,7 +15,7 @@ export function LiquidMetalBackground() {
   }
 
   return (
-    <div className="absolute inset-0 -z-10">
+    <div className="fixed inset-0 -z-10">
       <LiquidMetal
         width="100%"
         height="100%"

@@ -139,6 +139,8 @@
 
   body {
     @apply bg-background text-foreground;
+    background-color: #00042e;
+    /* Fallback dark color matching LiquidMetal */
     /* Usamos min-h-screen en lugar de dvh a veces ayuda con el rebote en iOS */
     min-height: 100vh;
 
