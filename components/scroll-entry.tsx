@@ -61,7 +61,7 @@ export default function ScrollEntry({ onEnter }: { onEnter: () => void }) {
 
       const current = progress.get()
       // Adjust sensitivity for touch (smaller divisor = more sensitive)
-      const delta = deltaY / 1500
+      const delta = deltaY / 1000
       
       const newProgress = Math.max(0, Math.min(1, current + delta))
       
