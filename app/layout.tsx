@@ -35,10 +35,26 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 })
 
+// 1. VIEWPORT: 'cover' es la clave para usar el 100% de la pantalla física
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: 'cover', // <--- ESTO permite pintar debajo del notch y barras
+  // No ponemos themeColor aquí para dejar que el CSS controle el fondo
+}
+
+// 2. METADATA: Enlazamos el manifest y configuramos iOS
 export const metadata: Metadata = {
   title: "Victor Valero | Designer & Developer",
-  description: "Personal portfolio showcasing design and development work. Creating digital experiences that blend thoughtful design with robust engineering.",
+  description: "Personal portfolio showcasing design and development work.",
   generator: "v0.app",
+  manifest: "/manifest.json", // <--- Enlace al archivo que creamos
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent", // <--- Hace la barra superior transparente
+    title: "Victor Valero",
+  },
   icons: {
     icon: [
       { url: '/favicon.png' },
@@ -48,22 +64,14 @@ export const metadata: Metadata = {
   },
 }
 
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
-  viewportFit: 'cover',
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="safe-area-enabled">
-      <body className={`font-sans ${openSans.variable} ${rubik.variable} ${instrumentSerif.variable}`} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`font-sans ${openSans.variable} ${rubik.variable} ${instrumentSerif.variable} antialiased`} suppressHydrationWarning>
         <TranslationProvider>
           <Suspense fallback={null}>
             {children}
