@@ -119,6 +119,12 @@ export default function Home() {
       title: "Brain Damage (2023 Remaster)",
       artist: "Pink Floyd",
       coverUrl: "/music/dark-side-cover.png",
+    },
+    {
+      src: "/music/eclipse.mp3",
+      title: "Eclipse (2023 Remaster)",
+      artist: "Pink Floyd",
+      coverUrl: "/music/dark-side-cover.png",
     }
   ]
 
@@ -310,10 +316,12 @@ export default function Home() {
                         )}
                       </div>
 
-                      <span className="text-xs text-gray-500">
-                        {playlist[currentSongIndex].title}{" "}
-                        <span className="text-gray-600">({currentSongIndex + 1}/{playlist.length})</span>
-                      </span>
+                      {musicControlsVisible && (
+                        <span className="text-xs text-gray-500">
+                          {playlist[currentSongIndex].title}{" "}
+                          <span className="text-gray-600">({currentSongIndex + 1}/{playlist.length})</span>
+                        </span>
+                      )}
                     </div>
                   </div>
                   <audio 

@@ -240,6 +240,9 @@ export function ExperienceSection({
                 <p className="text-xs text-gray-500">{t("degree")}</p>
               </div>
               
+              {/* Separator Line */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              
               {/* Tech Stack - Desktop: All Categories */}
               <div className="hidden lg:block relative border-l border-white/10 pl-4 space-y-4">
                 {techCategories.map((category) => (
@@ -259,38 +262,14 @@ export function ExperienceSection({
               {/* Tech Stack - Mobile: Carousel (UPDATED: Centered & Purple) */}
               <div className="lg:hidden relative border-l border-white/10 pl-4">
                 
-                {/* Header with Navigation (Centered) */}
-                <div className="flex items-center justify-center gap-4 mb-4">
+                {/* Header (Centered) */}
+                <div className="flex items-center justify-center mb-4">
                   <h4 
                     key={currentTechIndex}
                     className="text-[10px] font-bold text-white uppercase tracking-widest animate-in fade-in slide-in-from-left-2 duration-300"
                   >
                     {t(techCategories[currentTechIndex].titleKey as any)}
                   </h4>
-                  
-                  {/* Navigation Buttons */}
-                  <div className="flex items-center gap-2">
-                    {/* Previous Button */}
-                    <button
-                      onClick={() => setCurrentTechIndex((prev) => (prev === 0 ? techCategories.length - 1 : prev - 1))}
-                      className="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 hover:bg-white/10 hover:text-white transition-all active:scale-95"
-                      aria-label="Previous category"
-                    >
-                      <ChevronLeft className="h-3 w-3" />
-                    </button>
-                    
-                    {/* Next Button (Glowing Purple) */}
-                    <button
-                      onClick={() => setCurrentTechIndex((prev) => (prev === techCategories.length - 1 ? 0 : prev + 1))}
-                      className="group relative flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-all active:scale-95"
-                      aria-label="Next category"
-                    >
-                      <ChevronRight className="h-3 w-3 relative z-10" />
-                      {/* Shining/Glowing Effect (Purple) */}
-                      <div className="absolute inset-0 rounded-full bg-purple-500/40 blur-[4px] animate-pulse" />
-                      <div className="absolute inset-0 rounded-full border border-purple-500/50 opacity-70" />
-                    </button>
-                  </div>
                 </div>
                 
                 {/* Carousel Content (Centered) */}
@@ -302,6 +281,34 @@ export function ExperienceSection({
                       </span>
                     ))}
                   </div>
+                </div>
+
+                {/* Navigation Buttons (Below bubbles) */}
+                <div className="-mt-2 flex items-center justify-center gap-3">
+                  {/* Previous Button */}
+                  <button
+                    onClick={() => setCurrentTechIndex((prev) => (prev === 0 ? techCategories.length - 1 : prev - 1))}
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 hover:bg-white/10 hover:text-white transition-all active:scale-95"
+                    aria-label="Previous category"
+                  >
+                    <ChevronLeft className="h-3.5 w-3.5" />
+                  </button>
+                  
+                  {/* Next Button (Blinking Purple) */}
+                  <button
+                    onClick={() => setCurrentTechIndex((prev) => (prev === techCategories.length - 1 ? 0 : prev + 1))}
+                    className={cn(
+                      "group relative flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-all active:scale-95",
+                      "hover:bg-white/15"
+                    )}
+                    aria-label="Next category"
+                  >
+                    <ChevronRight className="h-3.5 w-3.5 relative z-10" />
+                    {/* Glowing / blinking effect */}
+                    <div className="absolute inset-0 rounded-full bg-purple-500/35 blur-[6px] motion-safe:animate-pulse motion-reduce:animate-none" />
+                    <div className="absolute inset-0 rounded-full bg-purple-500/25 motion-safe:animate-ping motion-reduce:animate-none" />
+                    <div className="absolute inset-0 rounded-full border border-purple-500/60 opacity-80" />
+                  </button>
                 </div>
                 
                 {/* Dots indicator (Centered & Purple) */}
