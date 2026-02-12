@@ -10,6 +10,38 @@ import { NowPlayingCard, type NowPlayingTrack } from "@/components/ui/now-playin
 import { PhotoWidget } from "@/components/ui/photo-widget"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
+const SHADOW_TIGHT = "[text-shadow:_0_1px_4px_rgb(0_0_0_/_65%)]"
+
+function escapeRegex(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+}
+
+function renderItalicKeywords(text: string, keywords: string[]) {
+  if (!text || keywords.length === 0) return text
+
+  const pattern = keywords
+    .slice()
+    .sort((a, b) => b.length - a.length)
+    .map(escapeRegex)
+    .join("|")
+
+  if (!pattern) return text
+
+  const re = new RegExp(`(${pattern})`, "g")
+  const parts = text.split(re)
+  const keywordSet = new Set(keywords)
+
+  return parts.map((part, idx) =>
+    keywordSet.has(part) ? (
+      <em key={`${idx}-${part}`} className="italic">
+        {part}
+      </em>
+    ) : (
+      <span key={`${idx}-${part}`}>{part}</span>
+    )
+  )
+}
+
 interface Experience {
   period: string
   role: string
@@ -59,7 +91,7 @@ function ExperienceCard({ experience, index, totalCards }: { experience: Experie
       </div>
 
       <div className="space-y-2">
-        <h3 className="text-base sm:text-lg font-semibold text-white [text-shadow:_0_2px_8px_rgb(0_0_0_/_40%)] font-open-sans-custom">
+        <h3 className={cn("text-base sm:text-lg font-semibold text-white font-open-sans-custom", SHADOW_TIGHT)}>
           {experience.role}
           {experience.focus && (
             <span className="block text-xs sm:text-sm font-normal text-gray-400 mt-1">
@@ -108,6 +140,48 @@ export function ExperienceSection({
   const [experiences, setExperiences] = useState<Experience[] | null>(null)
   const [loadError, setLoadError] = useState<string | null>(null)
   const [currentTechIndex, setCurrentTechIndex] = useState(0)
+
+  const experienceIntroKeywords = useMemo(() => {
+    switch (language) {
+      case "es":
+        return [
+          "desarrollo de software",
+          "arquitectura de sistemas",
+          "rigor ingenieril",
+          "exploración creativa",
+          "sistemas full-stack escalables",
+          "experiencias digitales cuidadosamente diseñadas",
+        ]
+      case "fr":
+        return [
+          "développement logiciel",
+          "architecture de systèmes",
+          "rigueur technique",
+          "exploration créative",
+          "systèmes full-stack évolutifs",
+          "expériences numériques soigneusement conçues",
+        ]
+      case "de":
+        return [
+          "Softwareentwicklung",
+          "Systemarchitektur",
+          "technische Präzision",
+          "kreativer Erkundung",
+          "skalierbaren Full-Stack-Systemen",
+          "durchdacht gestalteten digitalen Erlebnissen",
+        ]
+      case "en":
+      default:
+        return [
+          "software development",
+          "system architecture",
+          "engineering rigor",
+          "creative exploration",
+          "scalable, full-stack systems",
+          "thoughtfully designed digital experience",
+        ]
+    }
+  }, [language])
 
   const techCategories = useMemo(() => [
     {
@@ -228,15 +302,17 @@ export function ExperienceSection({
 
           <div className="relative text-center lg:text-left">
             <p className="mb-3 md:mb-4 text-xs uppercase tracking-[0.2em] text-gray-500 font-open-sans-custom">{t("background")}</p>
-            <h2 className="mb-4 md:mb-6 text-3xl sm:text-4xl font-bold tracking-tight text-white [text-shadow:_0_4px_30px_rgb(255_255_255_/_10%)] font-open-sans-custom md:text-5xl">{t("experience")}</h2>
-            <p className="max-w-md mx-auto lg:mx-0 text-sm sm:text-base leading-relaxed text-gray-400 font-open-sans-custom">{t("experienceIntro")}</p>
+            <h2 className="mb-4 md:mb-6 text-3xl sm:text-4xl font-bold tracking-tight text-white font-open-sans-custom md:text-5xl">{t("experience")}</h2>
+            <p className={cn("max-w-md mx-auto lg:mx-0 text-sm sm:text-base leading-relaxed text-white/90 font-thin font-open-sans-custom tracking-wide", SHADOW_TIGHT)}>
+              {renderItalicKeywords(t("experienceIntro"), experienceIntroKeywords)}
+            </p>
 
             <div className="mt-6 md:mt-10 flex flex-col gap-6 md:gap-8 font-open-sans-custom">
 
               {/* Education */}
               <div className="relative border-l border-white/10 pl-4">
-                <h4 className="mb-2 text-xs font-bold text-white uppercase tracking-widest">{t("education")}</h4>
-                <p className="text-gray-200 text-sm font-semibold">Tecnológico de Monterrey</p>
+                <h4 className={cn("mb-2 text-xs font-bold text-white uppercase tracking-widest", SHADOW_TIGHT)}>{t("education")}</h4>
+                <p className={cn("text-gray-200 text-sm font-semibold", SHADOW_TIGHT)}>Tecnológico de Monterrey</p>
                 <p className="text-xs text-gray-500">{t("degree")}</p>
               </div>
 
@@ -329,7 +405,7 @@ export function ExperienceSection({
 
               {/* Now Playing */}
               {nowPlaying && (
-                <div className="relative border-l border-white/10 pl-4">
+                <div className="relative border-l border-white/10 pl-4 md:flex md:justify-center md:border-l-0 md:pl-0 lg:border-l lg:pl-4 lg:justify-start">
                   <NowPlayingCard
                     track={nowPlaying}
                     isPlaying={isPlaying}

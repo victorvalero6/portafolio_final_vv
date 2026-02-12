@@ -266,7 +266,7 @@ export default function Home() {
                     <span className="font-serif italic">Valero</span>
                   </h1>
 
-                  <p className="mb-8 mx-auto max-w-2xl text-pretty leading-relaxed text-gray-300 [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)] font-thin font-open-sans-custom tracking-wide leading-7 text-xl">
+                  <p className="mb-8 mx-auto max-w-2xl text-pretty leading-relaxed text-gray-300 [text-shadow:_0_1px_4px_rgb(0_0_0_/_45%)] font-thin font-open-sans-custom tracking-wide leading-7 text-xl">
                     {t("heroQuote")}{" "}
                     <span className="font-serif italic">{t("thoughtfulDesign")}</span>
                     {t("heroQuoteEnd")}

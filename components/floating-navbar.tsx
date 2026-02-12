@@ -80,7 +80,7 @@ export function FloatingNavbar() {
               </button>
               
               {isLangDropdownOpen && (
-                <div className="absolute right-0 top-full mt-2 w-40 rounded-lg border border-white/10 bg-black/90 backdrop-blur-sm shadow-lg">
+                <div className="absolute right-0 top-full mt-2 w-40 rounded-lg border border-white/10 bg-black/80 backdrop-blur-sm shadow-lg">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
