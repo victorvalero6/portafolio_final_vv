@@ -66,7 +66,7 @@ export function ContactCard({
               <h1 className="text-2xl font-bold text-white [text-shadow:_0_2px_15px_rgb(255_255_255_/_20%)] font-open-sans-custom md:text-3xl lg:text-4xl">
                 {title}
               </h1>
-              <p className="mt-4 max-w-sm text-sm leading-relaxed text-gray-400 font-open-sans-custom">
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/85 font-thin font-open-sans-custom tracking-wide">
                 {description}
               </p>
             </div>
@@ -81,7 +81,7 @@ export function ContactCard({
 
           {/* Footer Tech Spec */}
           {/* UPDATED: Reduced top margin on mobile */}
-          <div className="mt-8 flex items-center gap-4 text-[9px] uppercase tracking-widest text-gray-600 font-mono md:mt-12">
+          <div className="mt-8 flex items-center gap-4 text-[9px] uppercase tracking-widest text-white/60 font-mono md:mt-12">
             <span>Lat: 25.6866° N</span>
             <span className="hidden sm:inline">//</span>
             <span>Lon: 100.3161° W</span>
@@ -107,7 +107,7 @@ export function ContactCard({
            </div>
 
            <div className="relative z-10">
-              <div className="mb-6 flex items-center gap-2 text-gray-500">
+              <div className="mb-6 flex items-center gap-2 text-white/70">
                 <Terminal className="h-4 w-4" />
                 <span className="text-xs uppercase tracking-widest font-mono">Message_Buffer</span>
               </div>
@@ -142,16 +142,16 @@ function ContactInfo({ icon: Icon, label, value, isCopyable = true }: ContactInf
       </div>
       
       <div className="flex-1 overflow-hidden">
-        <p className="text-[10px] uppercase tracking-wider text-gray-500 font-open-sans-custom group-hover:text-gray-400 transition-colors">
+        <p className="text-[10px] uppercase tracking-wider text-white/70 font-open-sans-custom group-hover:text-white/90 transition-colors">
           {label}
         </p>
-        <p className="truncate text-sm font-medium text-gray-200 font-open-sans-custom">
+        <p className="truncate text-sm font-medium text-white font-open-sans-custom">
           {value}
         </p>
       </div>
 
       {isCopyable && (
-        <div className="text-gray-500 opacity-0 transition-all group-hover:opacity-100 hidden sm:block">
+        <div className="text-white/70 opacity-0 transition-all group-hover:opacity-100 hidden sm:block">
           {copied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
         </div>
       )}

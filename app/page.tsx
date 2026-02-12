@@ -473,7 +473,7 @@ export default function Home() {
                         <Check className="h-8 w-8" />
                       </div>
                       <p className="text-xl font-bold text-white font-open-sans-custom">Transmission Received</p>
-                      <p className="mt-2 text-gray-400">I'll get back to you shortly.</p>
+                      <p className="mt-2 text-white/85">I'll get back to you shortly.</p>
                     </div>
                   ) : (
                     <form
@@ -481,7 +481,7 @@ export default function Home() {
                       className="w-full space-y-5"
                     >
                       <div className="space-y-1.5">
-                        <Label className="text-xs uppercase tracking-wider text-gray-400 font-mono pl-1">
+                        <Label className="text-xs uppercase tracking-wider text-white/80 font-mono pl-1">
                           {t("name")}
                         </Label>
                         <Input
@@ -489,13 +489,13 @@ export default function Home() {
                           name="name"
                           required
                           placeholder="ENTER_ID"
-                          className="h-12 border-white/10 bg-white/5 text-white placeholder:text-gray-500 focus:border-white/30 focus:bg-white/10 focus:ring-0 font-mono text-sm transition-all"
+                          className="h-12 border-white/10 bg-white/5 text-white placeholder:text-white/40 focus:border-white/30 focus:bg-white/10 focus:ring-0 font-mono text-sm transition-all"
                           disabled={formState.submitting}
                         />
                       </div>
 
                       <div className="space-y-1.5">
-                        <Label className="text-xs uppercase tracking-wider text-gray-400 font-mono pl-1">
+                        <Label className="text-xs uppercase tracking-wider text-white/80 font-mono pl-1">
                           {t("email")}
                         </Label>
                         <Input
@@ -503,20 +503,20 @@ export default function Home() {
                           name="email"
                           required
                           placeholder="ENTER_SIGNAL_SOURCE"
-                          className="h-12 border-white/10 bg-white/5 text-white placeholder:text-gray-500 focus:border-white/30 focus:bg-white/10 focus:ring-0 font-mono text-sm transition-all"
+                          className="h-12 border-white/10 bg-white/5 text-white placeholder:text-white/40 focus:border-white/30 focus:bg-white/10 focus:ring-0 font-mono text-sm transition-all"
                           disabled={formState.submitting}
                         />
                       </div>
 
                       <div className="space-y-1.5">
-                        <Label className="text-xs uppercase tracking-wider text-gray-400 font-mono pl-1">
+                        <Label className="text-xs uppercase tracking-wider text-white/80 font-mono pl-1">
                           {t("message")}
                         </Label>
                         <Textarea
                           name="message"
                           required
                           placeholder="INPUT_DATA_STREAM..."
-                          className="min-h-[120px] resize-none border-white/10 bg-white/5 text-white placeholder:text-gray-500 focus:border-white/30 focus:bg-white/10 focus:ring-0 font-mono text-sm transition-all p-4"
+                          className="min-h-[120px] resize-none border-white/10 bg-white/5 text-white placeholder:text-white/40 focus:border-white/30 focus:bg-white/10 focus:ring-0 font-mono text-sm transition-all p-4"
                           disabled={formState.submitting}
                         />
                       </div>
