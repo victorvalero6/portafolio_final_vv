@@ -217,7 +217,7 @@ export default function Home() {
     <>
       <LiquidMetalBackground />
       <TargetCursor targetSelector=".cursor-target" />
-      <Noise patternAlpha={25} patternRefreshInterval={2} patternSize={260} patternScaleX={1.6} patternScaleY={2} />
+      <Noise patternAlpha={10} patternRefreshInterval={2} patternSize={260} patternScaleX={1.6} patternScaleY={2} />
 
       <main className="relative h-screen overflow-hidden">
 
