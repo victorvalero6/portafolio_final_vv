@@ -47,14 +47,10 @@ export async function getPhotosByAlbumKey(albumKey: string): Promise<Photo[]> {
       .eq("photo_albums.is_active", true)
       .order("sort_order", { ascending: true })
 
-    if (error) {
-      console.error("Error fetching photos:", error)
-      return []
-    }
+    if (error) return []
 
     return (data || []) as unknown as Photo[]
-  } catch (error) {
-    console.error("Error in getPhotosByAlbumKey:", error)
+  } catch {
     return []
   }
 }
@@ -70,14 +66,10 @@ export async function getActiveAlbums(): Promise<PhotoAlbum[]> {
       .eq("is_active", true)
       .order("sort_order", { ascending: true })
 
-    if (error) {
-      console.error("Error fetching albums:", error)
-      return []
-    }
+    if (error) return []
 
     return data || []
-  } catch (error) {
-    console.error("Error in getActiveAlbums:", error)
+  } catch {
     return []
   }
 }

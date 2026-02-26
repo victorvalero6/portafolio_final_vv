@@ -54,16 +54,10 @@ function SectionPager({
   )
 }
 
-const SECTION_COUNT = 5
-
 export default function Home() {
   const [hasEntered, setHasEntered] = useState(false)
 
   const scrollContainerRef = useRef<HTMLDivElement>(null)
-  const workSectionRef = useRef<HTMLDivElement>(null)
-  const aboutSectionRef = useRef<HTMLDivElement>(null)
-  const skillsSectionRef = useRef<HTMLDivElement>(null)
-  const contactSectionRef = useRef<HTMLDivElement>(null)
   const wheelAccumRef = useRef(0)
   const lastWheelAtRef = useRef(0)
   const lastSectionJumpAtRef = useRef(0)
@@ -168,7 +162,7 @@ export default function Home() {
         if (playPromise !== undefined) {
           playPromise
             .then(() => setIsPlaying(true))
-            .catch((error) => setIsPlaying(false))
+            .catch(() => setIsPlaying(false))
         }
       }
     }
@@ -178,7 +172,7 @@ export default function Home() {
     const audio = audioRef.current
     if (audio && isPlaying) {
       audio.src = playlist[currentSongIndex].src
-      audio.play().catch(error => setIsPlaying(false))
+      audio.play().catch(() => setIsPlaying(false))
     }
   }, [currentSongIndex])
 
@@ -248,12 +242,6 @@ export default function Home() {
             className="relative z-10 flex h-screen w-full overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
-            <style jsx>{`
-              div::-webkit-scrollbar {
-                display: none;
-              }
-            `}</style>
-
             {/* Hero Section */}
             <section id="home" className="flex min-w-full snap-start items-center justify-center safe-px-4 safe-py-20">
               <div className="mx-auto w-full max-w-screen-xl px-4 md:px-8">
@@ -266,7 +254,7 @@ export default function Home() {
                     <span className="font-serif italic">Valero</span>
                   </h1>
 
-                  <p className="mb-8 mx-auto max-w-2xl text-pretty leading-relaxed text-gray-300 [text-shadow:_0_1px_4px_rgb(0_0_0_/_45%)] font-thin font-open-sans-custom tracking-wide leading-7 text-xl">
+                  <p className="mb-8 mx-auto max-w-2xl text-pretty leading-7 text-gray-300 [text-shadow:_0_1px_4px_rgb(0_0_0_/_45%)] font-thin font-open-sans-custom tracking-wide text-xl">
                     {t("heroQuote")}{" "}
                     <span className="font-serif italic">{t("thoughtfulDesign")}</span>
                     {t("heroQuoteEnd")}
@@ -357,7 +345,6 @@ export default function Home() {
             {/* Work Section */}
             <section
               id="work"
-              ref={workSectionRef}
               className="relative min-w-full snap-start overflow-y-auto safe-px-4 safe-pt-24 safe-pb-20 [&::-webkit-scrollbar]:hidden"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
@@ -379,7 +366,6 @@ export default function Home() {
             {/* About Section */}
             <section
               id="about"
-              ref={aboutSectionRef}
               className="relative min-w-full snap-start overflow-y-auto safe-px-4 safe-pt-24 safe-pb-20 [&::-webkit-scrollbar]:hidden"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
@@ -409,7 +395,6 @@ export default function Home() {
             {/* Skills Section */}
             <section
               id="skills"
-              ref={skillsSectionRef}
               className="relative min-w-full snap-start overflow-y-auto safe-px-4 safe-pt-24 safe-pb-20 [&::-webkit-scrollbar]:hidden"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
@@ -431,7 +416,6 @@ export default function Home() {
             {/* Contact Section */}
             <section
               id="contact"
-              ref={contactSectionRef}
               className="relative min-w-full snap-start overflow-y-auto safe-px-4 safe-pt-24 safe-pb-20"
             >
               <div
