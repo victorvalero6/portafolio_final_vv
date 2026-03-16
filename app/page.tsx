@@ -18,7 +18,6 @@ import { PageIndicator } from "@/components/ui/page-indicator"
 import FuzzyText from "@/components/ui/fuzzy-text"
 import { useForm } from "@formspree/react"
 import TargetCursor from "@/components/ui/target-cursor"
-import Noise from "@/components/ui/noise"
 import ScrollEntry from "@/components/scroll-entry"
 import { SkillsSection } from "@/components/ui/skills-section"
 
@@ -194,16 +193,23 @@ export default function Home() {
     const scrollContainer = scrollContainerRef.current
     if (!scrollContainer) return
 
+    let rafId: number | null = null
+
     const handleScroll = () => {
-      const containerWidth = scrollContainer.offsetWidth
-      const currentScroll = scrollContainer.scrollLeft
-      const section = Math.round(currentScroll / containerWidth)
-      setCurrentSection(section)
+      if (rafId !== null) return
+      rafId = requestAnimationFrame(() => {
+        const containerWidth = scrollContainer.offsetWidth
+        const currentScroll = scrollContainer.scrollLeft
+        const section = Math.round(currentScroll / containerWidth)
+        setCurrentSection(section)
+        rafId = null
+      })
     }
 
-    scrollContainer.addEventListener("scroll", handleScroll)
+    scrollContainer.addEventListener("scroll", handleScroll, { passive: true })
     return () => {
       scrollContainer.removeEventListener("scroll", handleScroll)
+      if (rafId !== null) cancelAnimationFrame(rafId)
     }
   }, [hasEntered])
 
@@ -211,8 +217,6 @@ export default function Home() {
     <>
       <LiquidMetalBackground />
       <TargetCursor targetSelector=".cursor-target" />
-      <Noise patternAlpha={10} patternRefreshInterval={2} patternSize={260} patternScaleX={1.6} patternScaleY={2} />
-
       <main className="relative h-screen overflow-hidden">
 
 

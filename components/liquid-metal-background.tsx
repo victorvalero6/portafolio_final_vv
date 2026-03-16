@@ -15,7 +15,7 @@ export function LiquidMetalBackground() {
   }
 
   return (
-    <div className="fixed inset-0 -z-10 opacity-80">
+    <div className="fixed inset-0 -z-10 opacity-80" style={{ willChange: "transform" }}>
       <LiquidMetal
         width="100%"
         height="100%"
@@ -28,7 +28,7 @@ export function LiquidMetalBackground() {
         distortion={0.1}
         contour={1}
         shape="none"
-        speed={0.4}
+        speed={0.15}
         scale={2.2}
       />
     </div>

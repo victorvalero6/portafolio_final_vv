@@ -212,11 +212,11 @@ function Letter({
     [1, 0]
   )
   
-  // Blur: Adds speed blur as it gets closer to camera
+  // Blur: Subtle speed blur — kept low for Safari GPU budget
   const blur = useTransform(
     progress,
     [start, start + step],
-    ["0px", "10px"]
+    ["0px", "2px"]
   )
 
   // Glow: Letters glow as they approach focus
@@ -233,8 +233,8 @@ function Letter({
   return (
     <motion.span
       className={cn(
-        "text-5xl md:text-9xl tracking-tight md:tracking-tighter text-white inline-block origin-center will-change-transform",
-        index > 6 ? "font-serif italic" : "font-open-sans-custom not-italic" // Style first/last name differently
+        "text-5xl md:text-9xl tracking-tight md:tracking-tighter text-white inline-block origin-center",
+        index > 6 ? "font-serif italic" : "font-open-sans-custom not-italic"
       )}
       style={{
         z: reduceMotion ? 0 : z,
