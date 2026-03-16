@@ -294,7 +294,7 @@ export function ExperienceSection({
           {/* Profile Picture Section */}
           <div className="relative aspect-square w-40 sm:w-48 mx-auto lg:mx-0 overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm group/profile">
             <DotPattern width={16} height={16} cx={1} cy={1} cr={1} className="absolute inset-0 -z-10 opacity-30 fill-white/20" />
-            <Image src="/placeholder-user.jpg" alt="Profile photo" fill className="object-cover opacity-90 transition-opacity duration-500 group-hover/profile:opacity-0" priority />
+            <Image src="/placeholder-user.jpg" alt="Profile photo" fill className="object-cover transition-opacity duration-500 group-hover/profile:opacity-0" priority />
             <Image src="/profile-hover.png" alt="Profile photo hover" fill className="object-cover opacity-0 transition-opacity duration-500 group-hover/profile:opacity-90" />
             <div className="absolute -left-1 -top-1 h-3 w-3 border-l border-t border-white/40" />
             <div className="absolute -bottom-1 -right-1 h-3 w-3 border-b border-r border-white/40" />
